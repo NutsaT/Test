@@ -1,0 +1,108 @@
+6.
+Q: The _________ __________ _______ is the location where control of all data center networking, server and storage equipment is exercised
+A: Data Center Management Console
+✅ (1 point)
+
+7.
+Q: The ____________ ___________ ______—or ____—houses the racks and cabinets that hold the computing and storage modules.
+A: Main Distribution Area (MDA)
+✅ (1 point)
+
+8.
+Q: The _______ _____________ —or _____ is the hub of the cabling system and includes the __________ _______ -___
+A: Horizontal Distribution Area (HDA); Horizontal Cross-Connect
+✅ (1 point)
+
+9.
+Q: How many inches of height are in 1U rack = ______ ; in 2U = ______
+A: 1U = 1.75 inches; 2U = 3.5 inches
+✅ (1 point)
+
+10.
+Q: What goes inside a rack (enlist the most important components):
+A:
+• Servers
+• Switches
+• Routers
+• Patch panels
+• Storage units
+• Power Distribution Units (PDUs)
+✅ (2 points)
+
+11.
+Q: ________ ________ is a single circuit board populated with components such as processors, memory, and network connections boards. They use _______ __________ and usually are placed in one rack unit
+A: Blade Server; shared resources
+✅ (1 point)
+
+12.
+Q: What is the name of the following datacenter switching fabric:
+The answer type here: _______ - _ -______
+A: Spine-and-Leaf
+✅ (1 point)
+
+13.
+Q: What is the name of the following datacenter switching fabric:
+The answer type here: _______ - _ -______
+A: Three-Tier Architecture
+✅ (1 point)
+
+14.
+Q: An ________ ________ is located at the edge of the network and is the first point of user access (and the final point of exit) for a network. It will allow the servers to connect to the network.
+A: Access Switch
+✅ (1 point)
+
+15.
+Q: A ______ ________ is located in the middle of the network and routes traffic from the outside world to the distribution layer and vice versa.
+A: Core Switch
+✅ (1 point)
+
+16.
+Q: Typically servers are connected to ________ _____ ________ switch, and that switch is connected to a number of backend storage devices. It works at the _______ _______ ______.
+A: Top of Rack (ToR); Access Layer Level
+✅ (1 point)
+
+17.
+Q: A __________ _________ ________ device connects to the network via one or more Ethernet cables. It contains one or more disks, and is usually configurable through a Web interface. Users can connect directly and read and write_______
+A: Network Attached Storage (NAS); files
+✅ (1 point)
+
+18.
+Q: _____________ means the ability of a server, network, storage system, or an entire data center, to recover quickly and continue operating even when there has been an equipment failure, power outage or other disruption
+A: Resiliency
+✅ (1 point)
+
+19.
+Q: ______________ of a data center is its tolerance to malfunctions of one or more components.
+A: Availability
+✅ (1 point)
+
+20.
+Q: The ______ - _____ segment of a datacenter consists of _______ switches, security devices or features, and the ______ - _____ server farms. The ______ - _____ server farms typically include FTP, Telnet, SMTP, web servers, DNS servers, and other business application servers.
+A: Front-End; access; front-end; front-end
+✅ (1 point)
+
+21.
+Q: ___________ segment servers have direct access to the database systems. Depending on the security policies, this segment uses firewalls between web and _____________ servers, IDS, and host IDSs. _____________ servers run a portion of the software used by business applications and provide the middleware or business logic.
+A: Application; application; Application
+✅ (1 point)
+
+22.
+Q: The ______ - _____ segment supports the connectivity to database servers. The ______ - _____ segment provides very stringent security considerations and aims at protecting the data
+A: Back-End; Back-End
+✅ (1 point)
+
+23.
+Q: The components of the server cluster are as follows:
+• _________ ______ — These interfaces are used for external access to the cluster
+• __________ _______ — Are responsible for managing the compute nodes in the cluster and optimizing the overall compute capacity
+• ________ _________ — Run an optimized or full OS kernel and is primarily responsible for CPU-intense operations
+• _________ ________ — Use Ethernet or Fibre Channel interfaces and usually connect into a SAN switch
+• _________ ______ ______ — Are used by server cluster and allow high performance access to all computing resources
+
+A:
+• External Interfaces
+• Cluster Managers
+• Compute Modules
+• Storage Modules
+• High-Speed Interconnects
+✅ (Points may vary)
