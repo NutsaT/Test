@@ -1,0 +1,204 @@
+# Create the file n.txt with the content as requested
+
+content = """
+OpenNebula Setup and Virtual Datacenter Deployment Guide
+=======================================================
+
+Student last name placeholder: YourLastName
+Replace "YourLastName" with your actual last name everywhere below.
+
+----------------------------------------
+1. Install and configure OpenNebula on Ubuntu (inside VirtualBox VM)
+----------------------------------------
+
+# Update and upgrade the system
+sudo apt update && sudo apt upgrade -y
+
+# Install required dependencies
+sudo apt install -y curl gnupg2 software-properties-common
+
+# Add OpenNebula repository key
+curl -fsSL https://downloads.opennebula.io/repo/repo.key | sudo gpg --dearmor -o /usr/share/keyrings/opennebula-archive-keyring.gpg
+
+# Add OpenNebula repository
+echo "deb [signed-by=/usr/share/keyrings/opennebula-archive-keyring.gpg] https://downloads.opennebula.io/repo/6.12/Ubuntu/24.04 stable opennebula" | sudo tee /etc/apt/sources.list.d/opennebula.list
+
+# Update repository list
+sudo apt update
+
+# Install OpenNebula packages
+sudo apt install -y opennebula opennebula-sunstone opennebula-gate opennebula-flow
+
+# Enable and start OpenNebula services
+sudo systemctl enable --now opennebula opennebula-sunstone
+
+# Check status of services
+sudo systemctl status opennebula
+sudo systemctl status opennebula-sunstone
+
+# (Optional) Check OpenNebula version
+oned -v
+
+----------------------------------------
+2. Access OpenNebula Sunstone Web Interface
+----------------------------------------
+
+- Open your browser on your host machine or inside the VM
+- Navigate to: http://<VM_IP_ADDRESS>:9869
+  (You can find VM_IP_ADDRESS by running `ip a` in the VM)
+
+- Login with default credentials:
+  username: oneadmin
+  password: (default password or the one you set during install)
+
+----------------------------------------
+3. Create Virtual Networks in OpenNebula
+----------------------------------------
+
+# From Sunstone UI:
+
+For each network:
+
+a) Go to "Network" section -> "Create"
+b) Fill network name: YourLastName_VNET1 and YourLastName_VNET2
+
+For YourLastName_VNET1:
+- Type: Bridged
+- Bridge name: YourLastName_Bridge1
+- Starting IP Address: 10.0.0.100
+- Size (Range): 2 IPs
+- No IP reserved (none held)
+- Save and create
+
+For YourLastName_VNET2:
+- Type: Bridged
+- Bridge name: YourLastName_Bridge2
+- Starting IP Address: 10.0.0.50
+- Size (Range): 2 IPs
+- No IP reserved
+- Save and create
+
+(After creation, take screenshots)
+
+----------------------------------------
+4. Create Virtual Machines (VMs)
+----------------------------------------
+
+Create 4 VMs with the following attributes in Sunstone -> "VMs" -> "Create"
+
+Template: ttylinux
+Host: one-sandbox
+Instantiation: Non-persistent
+CPU required: 0.25
+VCPU: 2
+
+VM1:
+- Name: YourLastName_VM1
+- Memory: 256 MB
+- Disk: 1 GB
+- Network: YourLastName_VNET1
+
+VM2:
+- Name: YourLastName_VM2
+- Memory: 512 MB
+- Disk: 0.5 GB
+- Network: YourLastName_VNET1
+
+VM3:
+- Name: YourLastName_VM3
+- Memory: 1 GB
+- Disk: 1 GB
+- Network: YourLastName_VNET2
+
+VM4:
+- Name: YourLastName_VM4
+- Memory: 1 GB
+- Disk: 0.75 GB
+- Network: YourLastName_VNET2
+
+(After creation, take screenshots)
+
+----------------------------------------
+5. Create Clusters
+----------------------------------------
+
+Go to "Clusters" -> "Create"
+
+Cluster1:
+- Name: YourLastName_Cluster1
+- Host: one-sandbox
+- Virtual Network: YourLastName_VNET1
+- Datastores: default and system
+
+Cluster2:
+- Name: YourLastName_Cluster2
+- Host: one-sandbox
+- Virtual Network: YourLastName_VNET2
+- Datastores: default and system
+
+(After creation, take screenshots)
+
+----------------------------------------
+6. Create a User
+----------------------------------------
+
+Go to "Users" -> "Create"
+
+- Username: YourLastName
+- Group: users
+
+Resource Limits:
+- Virtual Machines: 2
+- CPU: 1
+- Memory: 100 MB
+- System Disk: default
+- Images: running VMs (ttylinux) unlimited
+- Networks: all created networks
+- Datastores:
+  - system: images default, size unlimited
+  - default: images default, size unlimited
+
+(After creation, take screenshot)
+
+----------------------------------------
+7. Create Virtual Datacenter (VDC)
+----------------------------------------
+
+Go to "VDC" -> "Create"
+
+- Name: YourLastName_VDC
+- Groups: oneadmin
+- Resources: Add all resources created above (networks, clusters, datastores, VMs, user, etc.)
+
+(After creation, take screenshot)
+
+----------------------------------------
+Summary of Main Commands to run on Ubuntu VM in VirtualBox
+----------------------------------------
+
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y curl gnupg2 software-properties-common
+curl -fsSL https://downloads.opennebula.io/repo/repo.key | sudo gpg --dearmor -o /usr/share/keyrings/opennebula-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/opennebula-archive-keyring.gpg] https://downloads.opennebula.io/repo/6.12/Ubuntu/24.04 stable opennebula" | sudo tee /etc/apt/sources.list.d/opennebula.list
+sudo apt update
+sudo apt install -y opennebula opennebula-sunstone opennebula-gate opennebula-flow
+sudo systemctl enable --now opennebula opennebula-sunstone
+sudo systemctl status opennebula
+sudo systemctl status opennebula-sunstone
+
+----------------------------------------
+Notes:
+- Replace YourLastName with your actual last name throughout.
+- For screenshots, use your OS screenshot function and save images for your report.
+- Bridged network in VirtualBox requires you to create Host Network Interfaces or use existing ones.
+- The "one-sandbox" host is the default localhost host in OpenNebula.
+
+Good luck with your finals!
+
+"""
+
+file_path = "/mnt/data/n.txt"
+with open(file_path, "w") as f:
+    f.write(content)
+
+file_path
